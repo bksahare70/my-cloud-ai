@@ -740,7 +740,42 @@ function searchTools() {
   document.getElementById("noResult").style.display =
     query !== "" && found === 0 ? "block" : "none";
 }
-  
+ // MY CLOUD AI Favorites
+const favoriteKey = "myCloudAIFavorites";
+
+function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem(favoriteKey) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+document.querySelectorAll("body > section a[href]").forEach(link => {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "favorite-button";
+
+  function updateButton() {
+    button.textContent = getFavorites().includes(link.href) ? "⭐" : "☆";
+  }
+
+  button.onclick = () => {
+    let favorites = getFavorites();
+
+    if (favorites.includes(link.href)) {
+      favorites = favorites.filter(item => item !== link.href);
+    } else {
+      favorites.push(link.href);
+    }
+
+    localStorage.setItem(favoriteKey, JSON.stringify(favorites));
+    updateButton();
+  };
+
+  link.insertAdjacentElement("afterend", button);
+  updateButton();
+}); 
 </script>
 <a href="#top" class="home-button">🏠 Home</a>
 </body>
