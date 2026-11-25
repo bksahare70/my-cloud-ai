@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MY CLOUD AI - Everything in One Place</title>
-  <style>
+ <style>
   .home-button {
   position: fixed;
   right: 15px;
@@ -88,6 +88,47 @@ body.dark-mode .card {
 
 body.dark-mode a {
   color: #ffffff;
+}
+  /* Responsive Mobile Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+} 
+   /* Extra Small Mobile Screens */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .home-button {
+    right: 10px;
+    bottom: 12px;
+  }
 }
 </style>
 </head>
