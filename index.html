@@ -635,7 +635,7 @@ function searchTools(){
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
 
   const items = document.querySelectorAll(".card, .tool-card");
-
+let found = 0;
   items.forEach(item => {
     const match = query === "" || item.innerText.toLowerCase().includes(query);
     item.style.display = match ? "" : "none";
