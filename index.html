@@ -635,7 +635,7 @@ footer{
 function searchTools(){
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
 
-  const items = document.querySelectorAll("main a[href]");
+  const items = document.querySelectorAll("a[href^='https://']");
   let found = 0;
 
   items.forEach(item => {
