@@ -631,20 +631,25 @@ footer{
 
 <script>
 
+
 function searchTools(){
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
 
-  const items = document.querySelectorAll(".card, .tool-card, .category a");
-let found = 0;
+  const items = document.querySelectorAll("main a[href]");
+  let found = 0;
+
   items.forEach(item => {
-    const match = query === "" || item.innerText.toLowerCase().includes(query);
+    const match = item.innerText.toLowerCase().includes(query);
+
     item.style.display = match ? "" : "none";
+
     if(match) found++;
   });
 
   document.getElementById("noResult").style.display =
     query !== "" && found === 0 ? "block" : "none";
 }
+  
   
 </script>
 
