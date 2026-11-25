@@ -630,7 +630,23 @@ footer{
 </footer>
 
 <script>
-function searchTools()
+
+function searchTools(){
+  const query = document.getElementById("searchBox").value.trim().toLowerCase();
+
+  const items = document.querySelectorAll(".card, section a[href]");
+  let found = 0;
+
+  items.forEach(item => {
+    const match = query === "" || item.innerText.toLowerCase().includes(query);
+    item.style.display = match ? "" : "none";
+    if(match) found++;
+  });
+
+  document.getElementById("noResult").style.display =
+    query !== "" && found === 0 ? "block" : "none";
+}
+  
 </script>
 
 </body>
