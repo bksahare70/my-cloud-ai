@@ -634,8 +634,7 @@ footer{
 function searchTools(){
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
 
-  const items = document.querySelectorAll(".card, section a[href]");
-  let found = 0;
+  const items = document.querySelectorAll(".card, .tool-card");
 
   items.forEach(item => {
     const match = query === "" || item.innerText.toLowerCase().includes(query);
