@@ -4,7 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MY CLOUD AI - Everything in One Place</title>
-<style>
+  <style>
+  .home-button {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  background: #1b2b49;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 4px 10px #0004;
+  }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:Arial,sans-serif;
@@ -65,7 +78,7 @@ footer{
 </style>
 </head>
 <body>
-
+<div id="top"></div>
 <header>
   <h1>MY CLOUD AI</h1>
   <p>Everything in One Place</p>
@@ -670,6 +683,6 @@ function searchTools() {
 }
   
 </script>
-
+<a href="#top" class="home-button">🏠 Home</a>
 </body>
 </html>
