@@ -631,25 +631,43 @@ footer{
 
 <script>
 
-
-function searchTools(){
+function searchTools() {
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
-
-  const items = document.querySelectorAll("a[href^='https://']");
   let found = 0;
 
-  items.forEach(item => {
-    const match = item.innerText.toLowerCase().includes(query);
+  // Search the 12 category cards
+  const categories = document.querySelectorAll("#toolGrid .card");
 
-    item.style.display = match ? "" : "none";
+  categories.forEach(card => {
+    const match = card.innerText.toLowerCase().includes(query);
+    card.style.display = match ? "" : "none";
 
-    if(match) found++;
+    if (query !== "" && match) found++;
+  });
+
+  // Search individual tools inside each Hub
+  const sections = document.querySelectorAll("body > section");
+
+  sections.forEach(section => {
+    const links = section.querySelectorAll("a[href]");
+    let sectionFound = 0;
+
+    links.forEach(link => {
+      const match = link.innerText.toLowerCase().includes(query);
+      link.style.display = match ? "" : "none";
+
+      if (match) sectionFound++;
+    });
+
+    section.style.display =
+      query === "" || sectionFound > 0 ? "" : "none";
+
+    found += sectionFound;
   });
 
   document.getElementById("noResult").style.display =
     query !== "" && found === 0 ? "block" : "none";
 }
-  
   
 </script>
 
