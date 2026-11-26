@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10264b">
+<title>MY CLOUD AI — AI Video Studio</title>
+<style>
+:root{--bg:#f3f6fc;--card:#fff;--text:#17233d;--muted:#64748b;--accent:#2563eb;--line:#dce5f2}
+.dark{--bg:#101827;--card:#1e293b;--text:#f8fafc;--muted:#cbd5e1;--accent:#60a5fa;--line:#334155}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{padding:28px 16px;text-align:center;color:white;background:linear-gradient(135deg,#10264b,#2563eb)}
+header h1{margin:0;font-size:29px}header p{margin:9px 0 0}
+.wrap{max-width:1050px;margin:auto;padding:16px}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:8px 0 18px}
+input{flex:1;min-width:180px;padding:13px;border:1px solid var(--line);border-radius:10px;font-size:15px;background:var(--card);color:var(--text)}
+button{border:0;border-radius:9px;padding:11px 14px;background:var(--accent);color:white;font-weight:bold;cursor:pointer}
+.section{margin:25px 0}.section h2{font-size:20px;margin:0 0 12px}
+.section p.intro{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px;min-height:112px;box-shadow:0 3px 12px #0000000c}
+.card a{display:block;color:var(--text);font-weight:bold;text-decoration:none;padding-right:25px;line-height:1.35}
+.card a:focus,.card a:hover{color:var(--accent);text-decoration:underline}
+.card small{display:block;color:var(--muted);margin-top:9px;line-height:1.4}
+.fav{position:absolute;right:8px;top:7px;padding:3px 6px;background:transparent;color:#eab308;font-size:20px}
+.notice{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:12px;color:var(--muted);font-size:13px;line-height:1.6;margin:24px 0}
+.empty{color:var(--muted);padding:20px;background:var(--card);border-radius:12px}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>🤖 MY CLOUD AI</h1>
+<p>Everything in One Place</p>
+<p>AI Video Studio • Image • Chat • Audio • Coding • Cloud</p>
+</header>
+<main class="wrap">
+<div class="toolbar">
+<input id="search" type="search" placeholder="🔍 Search any AI tool..." oninput="render()">
+<button onclick="setMode('all')">All Tools</button>
+<button onclick="setMode('fav')">⭐ Favorites</button>
+<button onclick="document.body.classList.toggle('dark')">🌙 Theme</button>
+</div>
+<div id="content"></div>
+<div class="notice"><b>ज़रूरी जानकारी:</b> MY CLOUD AI एक tools directory है। ये लिंक बाहरी सेवाओं पर खुलते हैं। हर सेवा की free limit, login और उपलब्धता अलग हो सकती है। यह वेबसाइट खुद GPU, private cloud storage या AI video rendering उपलब्ध नहीं कराती। किसी भी सेवा में निजी फ़ाइल डालने से पहले उसकी privacy और terms जाँचें।</div>
+</main>
+<footer>© 2026 MY CLOUD AI</footer>
+<script>
+const groups = [
+{title:"🎬 Text to Video",desc:"लिखे हुए prompt से वीडियो बनाने वाले टूल",items:[
+["Kling AI","https://klingai.com/"],["Runway","https://runwayml.com/"],["Pika","https://pika.art/"],["Luma Dream Machine","https://lumalabs.ai/dream-machine"],["Hailuo AI","https://hailuoai.video/"],["PixVerse","https://pixverse.ai/"],["Haiper","https://haiper.ai/"],["InVideo AI","https://invideo.io/"]
+]},
+{title:"🖼️ Image to Video",desc:"तस्वीर को चलती हुई वीडियो में बदलने वाले टूल",items:[
+["Kling AI","https://klingai.com/"],["Runway","https://runwayml.com/"],["Pika","https://pika.art/"],["Luma Dream Machine","https://lumalabs.ai/dream-machine"],["Hailuo AI","https://hailuoai.video/"],["PixVerse","https://pixverse.ai/"]
+]},
+{title:"✂️ AI Video Editing",desc:"वीडियो एडिटिंग, captions और आसान creation",items:[
+["CapCut","https://www.capcut.com/"],["Canva Video","https://www.canva.com/"],["Adobe Express","https://www.adobe.com/express/"],["VEED","https://www.veed.io/"],["Descript","https://www.descript.com/"],["InVideo","https://invideo.io/"]
+]},
+{title:"✨ AI Animation",desc:"Animation और creative video workflows",items:[
+["Animaker","https://www.animaker.com/"],["Krikey AI","https://www.krikey.ai/"],["Renderforest","https://www.renderforest.com/"],["Vyond","https://www.vyond.com/"],["Canva","https://www.canva.com/"]
+]},
+{title:"⬆️ Video Upscaling",desc:"वीडियो की quality बेहतर करने के टूल",items:[
+["剪映 / CapCut","https://www.capcut.com/"],["Topaz Video AI","https://www.topazlabs.com/topaz-video-ai"],["TensorPix","https://tensorpix.ai/"],["Media.io","https://www.media.io/"]
+]},
+{title:"🎨 Image AI",desc:"Image generation और design",items:[
+["Ideogram","https://ideogram.ai/"],["Leonardo AI","https://leonardo.ai/"],["Playground","https://playground.com/"],["Recraft","https://recraft.ai/"],["Adobe Firefly","https://firefly.adobe.com/"],["Microsoft Designer","https://designer.microsoft.com/"],["Craiyon","https://www.craiyon.com/"],["Pixlr","https://pixlr.com/"],["Remove.bg","https://www.remove.bg/"]
+]},
+{title:"💬 Chat AI",desc:"AI assistants और research",items:[
+["ChatGPT","https://chatgpt.com/"],["Google Gemini","https://gemini.google.com/"],["Claude","https://claude.ai/"],["Microsoft Copilot","https://copilot.microsoft.com/"],["Perplexity","https://www.perplexity.ai/"],["Poe","https://poe.com/"],["Hugging Face","https://huggingface.co/"]
+]},
+{title:"🎙️ Audio AI",desc:"Voice, text-to-speech और music tools",items:[
+["ElevenLabs","https://elevenlabs.io/"],["Murf AI","https://murf.ai/"],["TTSMaker","https://ttsmaker.com/"],["Suno","https://suno.com/"],["Udio","https://udio.com/"],["Adobe Podcast","https://podcast.adobe.com/"],["Auphonic","https://auphonic.com/"]
+]},
+{title:"💻 Coding AI",desc:"Code बनाना और online development",items:[
+["Replit","https://replit.com/"],["GitHub","https://github.com/"],["CodePen","https://codepen.io/"],["StackBlitz","https://stackblitz.com/"],["Google AI Studio","https://aistudio.google.com/"],["Bolt","https://bolt.new/"],["Lovable","https://lovable.dev/"]
+]},
+{title:"☁️ Cloud & Storage",desc:"Cloud files और free-tier compute platforms",items:[
+["Google Drive","https://drive.google.com/"],["OneDrive","https://onedrive.live.com/"],["Dropbox","https://www.dropbox.com/"],["MEGA","https://mega.io/"],["Google Colab","https://colab.research.google.com/"],["Kaggle","https://www.kaggle.com/"],["Hugging Face Spaces","https://huggingface.co/spaces"]
+]},
+{title:"🧰 Design & Productivity",desc:"Design और काम व्यवस्थित करने के टूल",items:[
+["Canva","https://www.canva.com/"],["Photopea","https://www.photopea.com/"],["Cleanup.pictures","https://cleanup.pictures/"],["Notion","https://www.notion.so/"],["Trello","https://trello.com/"]
+]}
+];
+let mode="all",favs=[];
+try{favs=JSON.parse(localStorage.getItem("mycloud_favs")||"[]")}catch(e){favs=[]}
+function setMode(m){mode=m;render()}
+function toggleFav(name){favs=favs.includes(name)?favs.filter(x=>x!==name):[...favs,name];try{localStorage.setItem("mycloud_favs",JSON.stringify(favs))}catch(e){}render()}
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase(),root=document.getElementById("content");root.innerHTML="";let count=0;
+ groups.forEach(g=>{
+  const matches=g.items.filter(([n,u])=>(n.toLowerCase().includes(q)||g.title.toLowerCase().includes(q))&&(mode==="all"||favs.includes(n)));
+  if(!matches.length)return;count+=matches.length;
+  const sec=document.createElement("section");sec.className="section";
+  const h=document.createElement("h2");h.textContent=g.title;sec.appendChild(h);
+  const p=document.createElement("p");p.className="intro";p.textContent=g.desc;sec.appendChild(p);
+  const grid=document.createElement("div");grid.className="grid";
+  matches.forEach(([name,url])=>{
+   const c=document.createElement("article");c.className="card";
+   const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=name;
+   const sm=document.createElement("small");sm.textContent="Official website ↗";
+   const b=document.createElement("button");b.className="fav";b.type="button";b.setAttribute("aria-label","Toggle favorite");b.textContent=favs.includes(name)?"★":"☆";b.onclick=()=>toggleFav(name);
+   c.append(b,a,sm);grid.appendChild(c);
+  });
+  sec.appendChild(grid);root.appendChild(sec);
+ });
+ if(!count){const e=document.createElement("div");e.className="empty";e.textContent=mode==="fav"?"अभी कोई favorite नहीं है। किसी टूल के ☆ पर टैप करें।":"कोई टूल नहीं मिला। दूसरा नाम खोजें।";root.appendChild(e)}
+}
+render();
+</script>
+</body>
+</html>
