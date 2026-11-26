@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14285a"><title>Sign Up | MY CLOUD AI</title><style>
+:root{--bg:#f4f7fc;--panel:#fff;--ink:#17233d;--muted:#64748b;--accent:#2563eb;--line:#dce5f2}
+[data-theme=dark]{--bg:#0b1224;--panel:#121d35;--ink:#eef4ff;--muted:#aab8d0;--accent:#60a5fa;--line:#293957}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Arial,sans-serif}
+header{padding:22px 16px;background:linear-gradient(120deg,#101a3a,#1758b8,#5424a8);color:white}
+header .wrap,main,.foot{max-width:1100px;margin:auto}h1{margin:0;font-size:clamp(24px,5vw,36px)}header p{margin:6px 0 0;color:#e4edff}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}nav a,.btn{color:white;background:#ffffff22;border:1px solid #ffffff44;padding:8px 12px;border-radius:10px;text-decoration:none}
+main{padding:20px 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+input{flex:1;min-width:180px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+button{cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);text-decoration:none;min-height:100px}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}.card b{display:block;font-size:16px}.card small{color:var(--muted)}
+section{margin:20px 0}.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--muted)}
+footer{padding:20px 14px;text-align:center;color:var(--muted)}a{color:var(--accent)}
+@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:11px}}
+</style></head><body><header><div class="wrap"><h1>☁️ Sign Up</h1><p>Registration is not configured.</p><nav><a href="index.html">⌂ Home</a><a href="AI-Video-Studio.html">Video</a><a href="AI-Image-Studio.html">Image</a><a href="AI-Chat-Studio.html">Chat</a><a href="AI-Audio-Studio.html">Audio</a><a href="GPU-Cloud.html">Cloud</a></nav></div></header><main><div class='note'>User registration is not active. Do not enter passwords on this demo directory.</div></main><footer>MY CLOUD AI • Tool directory • External services have their own terms and limits.</footer><script>
+(function(){const saved=localStorage.getItem('mycloud-theme');if(saved==='dark')document.documentElement.dataset.theme='dark';const t=document.getElementById('theme');if(t)t.onclick=()=>{const d=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=d?'dark':'light';localStorage.setItem('mycloud-theme',d?'dark':'light')};const s=document.getElementById('search');if(s)s.addEventListener('input',()=>{const q=s.value.toLowerCase();document.querySelectorAll('[data-search]').forEach(el=>el.hidden=!el.dataset.search.includes(q))});})();
+</script></body></html>
