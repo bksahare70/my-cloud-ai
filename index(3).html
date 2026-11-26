@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY CLOUD AI - Everything in One Place</title>
+ <style>
+  .home-button {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  background: #1b2b49;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 4px 10px #0004;
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#080e1e;color:#f5f7ff;
+}
+header{
+  text-align:center;padding:30px 15px;
+  background:linear-gradient(135deg,#172c50,#101a34);
+  border-bottom:1px solid #30476c;
+}
+header h1{font-size:32px;color:#55d8ff}
+header p{margin-top:10px;color:#c5d4ed}
+.tag{
+  display:inline-block;margin-top:14px;padding:7px 14px;
+  background:#183e58;color:#70e3ff;border-radius:20px;
+  font-size:12px;
+}
+main{max-width:1100px;margin:auto;padding:25px 18px}
+.hero{text-align:center;padding:28px 5px}
+.hero h2{font-size:27px;margin-bottom:12px}
+.hero p{color:#aebbd2;margin-bottom:22px}
+.search{
+  width:100%;max-width:600px;padding:16px;
+  border:1px solid #405577;border-radius:12px;
+  background:#fff;color:#111;font-size:16px;
+}
+.section-title{margin:25px 0 18px;font-size:23px}
+.grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+}
+.card{
+  background:linear-gradient(145deg,#1b2b49,#14213b);
+  border:1px solid #34496c;border-radius:16px;
+  padding:22px 10px;text-align:center;
+  min-height:145px;transition:.2s;
+}
+.card:active{transform:scale(.97)}
+.card .emoji{font-size:32px;margin-bottom:12px}
+.card h3{font-size:16px;margin-bottom:9px}
+.card p{font-size:13px;color:#aebbd2}
+.card small{
+  display:inline-block;margin-top:12px;
+  color:#65ddff;font-size:11px;
+}
+.no-result{
+  display:none;text-align:center;padding:25px;color:#ffcaca;
+}
+footer{
+  text-align:center;padding:25px 10px;
+  color:#9eabc2;font-size:13px;margin-top:25px;
+}
+@media(min-width:650px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:950px){
+  .grid{grid-template-columns:repeat(4,1fr)}
+}
+  /* Responsive Mobile Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+} 
+   /* Extra Small Mobile Screens */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .home-button {
+    right: 10px;
+    bottom: 12px;
+  }
+}
+
+/* MY CLOUD AI Final Upgrade */
+:root { color-scheme: dark; }
+body { scroll-behavior: smooth; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+.hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:14px; }
+.action-btn {
+  border:1px solid #456184; background:#1b2b49; color:#fff;
+  padding:11px 15px; border-radius:12px; cursor:pointer; font-weight:700;
+}
+.action-btn:active, .favorite-btn:active { transform:scale(.97); }
+#favoritesPanel {
+  max-width:1100px; margin:10px auto 24px; padding:16px;
+  border:1px solid #34496c; border-radius:16px; background:#101b31;
+}
+#favoritesPanel h2 { margin-bottom:10px; font-size:20px; }
+#favoriteList { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.favorite-entry { display:flex; align-items:center; gap:8px; min-width:0; }
+.favorite-entry a, .tool-link-wrap > a {
+  flex:1; min-width:0;
+}
+.favorite-btn {
+  flex:0 0 auto; border:1px solid #526987; border-radius:10px;
+  padding:8px 10px; background:#203654; color:#ffe27a; cursor:pointer;
+}
+.tool-link-wrap { display:flex; align-items:stretch; gap:7px; min-width:0; }
+.tool-link-wrap > a { display:block; }
+.tool-link-wrap .favorite-btn { align-self:center; }
+#toolGrid .card { cursor:pointer; }
+#toolGrid .card:focus { outline:2px solid #55d8ff; outline-offset:3px; }
+.hub-heading { scroll-margin-top:18px; }
+#toast {
+  position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+  z-index:10001; background:#203654; color:#fff; border:1px solid #607b9f;
+  border-radius:20px; padding:10px 16px; display:none; max-width:90%;
+}
+body.light-mode { background:#f2f6fc; color:#14213b; }
+body.light-mode header { background:linear-gradient(135deg,#dcecff,#f4f8ff); border-color:#c4d4e8; }
+body.light-mode header p, body.light-mode .hero p, body.light-mode .card p { color:#40516b; }
+body.light-mode .card, body.light-mode #favoritesPanel { background:#fff; color:#14213b; border-color:#cbd7e6; }
+body.light-mode .action-btn, body.light-mode .favorite-btn { background:#e5eef9; color:#14213b; border-color:#bdcde0; }
+body.light-mode .section-title { color:#14213b; }
+@media(max-width:480px) {
+  #favoriteList { grid-template-columns:1fr; }
+  #favoritesPanel { margin:8px 10px 20px; }
+  .hero-actions { gap:7px; }
+  .action-btn { padding:10px 12px; font-size:13px; }
+}
+
+</style>
+</head>
+<body>
+<div id="top"></div>
+<header>
+  <h1>MY CLOUD AI</h1>
+  <p>Everything in One Place</p>
+  <span class="tag">YOUR DIGITAL TOOLS HUB</span>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Welcome to MY CLOUD AI</h2>
+    <p>Discover AI and Non-AI tools in one place.</p>
+    <input class="search" id="searchBox"
+      type="search" placeholder="Search any tool or category..."
+      oninput="searchTools()">
+    <div class="hero-actions">
+      <button class="action-btn" type="button" onclick="showFavorites()">⭐ My Favorites</button>
+      <button class="action-btn" type="button" onclick="toggleTheme()">🌙 / ☀️ Theme</button>
+      <button class="action-btn" type="button" onclick="clearSearch()">✖ Clear Search</button>
+    </div>
+  </section>
+
+  <h2 class="section-title">Explore All Categories</h2>
+
+  <section class="grid" id="toolGrid">
+    <div class="card"><div class="emoji">🤖</div><h3>AI Tools</h3><p>AI and Chat Tools</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🎨</div><h3>Image Studio</h3><p>Image and Design</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🎬</div><h3>Video Studio</h3><p>Video Creation and Editing</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🎙️</div><h3>Audio Studio</h3><p>Voice and Audio Tools</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">☁️</div><h3>Cloud Storage</h3><p>Files and Backup</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">⚡</div><h3>GPU Hub</h3><p>Cloud Computing</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">💻</div><h3>Developer Hub</h3><p>Coding and Apps</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🔄</div><h3>Automation</h3><p>Workflow Tools</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">📄</div><h3>PDF & Office</h3><p>Documents and Files</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">📚</div><h3>Education</h3><p>Learning Resources</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🏢</div><h3>Business Hub</h3><p>Business Tools</p><small>EXPLORE CATEGORY</small></div>
+    <div class="card"><div class="emoji">🌐</div><h3>Web Hub</h3><p>Useful Websites</p><small>EXPLORE CATEGORY</small></div>
+  </section>
+
+  <div class="no-result" id="noResult">
+    No matching category or tool found. Try another search.
+  </div>
+</main>
+
+<section id="favoritesPanel" aria-live="polite">
+  <h2>⭐ My Favorite Tools</h2>
+  <p id="favoriteEmpty" style="color:#aebbd2">Abhi koi favorite save nahi hai. Kisi tool ke ☆ button ko dabao.</p>
+  <div id="favoriteList"></div>
+</section>
+
+<section style="padding:20px 0" id="ai-tools-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">🤖 AI Tools Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://chatgpt.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>ChatGPT</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://gemini.google.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Google Gemini</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://claude.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Claude</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Microsoft Copilot</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Access</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.perplexity.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Perplexity</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>DeepSeek</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Access</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="image-studio" class="hub-section">
+  <h2 style="margin-bottom:18px">🎨 Image Studio</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.canva.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Canva</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.adobe.com/express/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Adobe Express</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://designer.microsoft.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Microsoft Designer</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Access</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.remove.bg/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Remove.bg</h3>
+      <p style="color:#65ddff;margin-top:8px">Limited Free</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.photopea.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Photopea</h3>
+      <p style="color:#65ddff;margin-top:8px">Free Access</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://leonardo.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:18px 10px;border-radius:14px;text-align:center;text-decoration:none;border:1px solid #34496c">
+      <h3>Leonardo AI</h3>
+      <p style="color:#65ddff;margin-top:8px">Limited Free</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://ideogram.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Ideogram</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Image Generator ↗</small>
+    </a>
+    <a href="https://playground.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Playground AI</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Image Generator ↗</small>
+    </a>
+    <a href="https://www.recraft.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Recraft AI</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Design ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="video-studio" class="hub-section">
+  <h2 style="margin-bottom:18px">🎬 Video Studio</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.capcut.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>CapCut</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.canva.com/video-editor/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Canva Video</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://clipchamp.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Clipchamp</h3>
+      <p style="color:#a65dff">Free Plan</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://www.veed.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>VEED</h3>
+      <p style="color:#a65dff">Limited Free</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://invideo.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>InVideo AI</h3>
+      <p style="color:#a65dff">Limited Free</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://runwayml.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Runway</h3>
+      <p style="color:#a65dff">Limited Free</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://pika.art/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Pika AI</h3>
+      <p style="color:#a65dff">Free access / limits may apply</p>
+      <small>Open Tool ↗</small>
+    </a>
+
+    <a href="https://klingai.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Kling AI</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Video Generator ↗</small>
+    </a>
+    <a href="https://lumalabs.ai/dream-machine" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Luma Dream Machine</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Video Generator ↗</small>
+    </a>
+    <a href="https://hailuoai.video/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Hailuo AI</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Video Generator ↗</small>
+    </a>
+    <a href="https://pixverse.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>PixVerse AI</h3>
+      <p style="color:#a65dff">Free tier / Limited</p>
+      <small>AI Video Generator ↗</small>
+    </a>
+    <a href="https://haiper.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Haiper AI</h3>
+      <p style="color:#a65dff">Availability may vary</p>
+      <small>AI Video Generator ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="audio-studio" class="hub-section">
+  <h2 style="margin-bottom:18px">🎵 Audio Studio</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.audacityteam.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Audacity</h3>
+      <p style="color:#a65dff">Free</p>
+      <small>Audio Editing ↗</small>
+    </a>
+
+    <a href="https://www.bandlab.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>BandLab</h3>
+      <p style="color:#a65dff">Free Tools</p>
+      <small>Music Studio ↗</small>
+    </a>
+
+    <a href="https://podcast.adobe.com/enhance" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Adobe Podcast</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Voice Enhance ↗</small>
+    </a>
+
+    <a href="https://elevenlabs.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>ElevenLabs</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>AI Voice ↗</small>
+    </a>
+
+    <a href="https://suno.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Suno AI</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>AI Music ↗</small>
+    </a>
+
+    <a href="https://www.udio.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Udio</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>AI Music ↗</small>
+    </a>
+
+    <a href="https://murf.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Murf AI</h3>
+      <p style="color:#a65dff">Free trial / Limited</p>
+      <small>AI Voice ↗</small>
+    </a>
+    <a href="https://ttsmaker.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>TTSMaker</h3>
+      <p style="color:#a65dff">Free use / limits may apply</p>
+      <small>Text to Speech ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="cloud-storage" class="hub-section">
+  <h2 style="margin-bottom:18px">☁️ Cloud Storage</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://drive.google.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Google Drive</h3>
+      <p style="color:#a65dff">Free Storage</p>
+      <small>Open Storage ↗</small>
+    </a>
+
+    <a href="https://www.dropbox.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Dropbox</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Open Storage ↗</small>
+    </a>
+
+    <a href="https://mega.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>MEGA</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Open Storage ↗</small>
+    </a>
+
+    <a href="https://onedrive.live.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>OneDrive</h3>
+      <p style="color:#a65dff">Free Storage</p>
+      <small>Open Storage ↗</small>
+    </a>
+
+    <a href="https://github.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>GitHub</h3>
+      <p style="color:#a65dff">Free Repositories</p>
+      <small>Open GitHub ↗</small>
+    </a>
+
+    <a href="https://www.mediafire.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>MediaFire</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Open Storage ↗</small>
+    </a>
+
+    <a href="https://huggingface.co/datasets" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none;border:1px solid #34496c">
+      <h3>Hugging Face Datasets</h3>
+      <p style="color:#a65dff">Free public datasets</p>
+      <small>Dataset Storage ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="gpu-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">⚡ GPU Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://colab.research.google.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Google Colab</h3>
+      <p style="color:#a65dff">Free GPU / Limited</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+    <a href="https://www.kaggle.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Kaggle</h3>
+      <p style="color:#a65dff">Free GPU / Quota</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+    <a href="https://lightning.ai/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Lightning AI</h3>
+      <p style="color:#a65dff">Free Tier / Limited</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+    <a href="https://huggingface.co/spaces" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Hugging Face</h3>
+      <p style="color:#a65dff">Free Spaces / Limited</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+    <a href="https://www.tensorflow.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>TensorFlow</h3>
+      <p style="color:#a65dff">Free Framework</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+    <a href="https://www.runpod.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>RunPod</h3>
+      <p style="color:#a65dff">Paid GPU</p>
+      <small>Open Platform ↗</small>
+    </a>
+
+  </div>
+</section>
+ 
+<section style="padding:20px 0" id="developer-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">💻 Developer Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://replit.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Replit</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Code Online ↗</small>
+    </a>
+
+    <a href="https://codepen.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>CodePen</h3>
+      <p style="color:#a65dff">Free Plan</p>
+      <small>Code Online ↗</small>
+    </a>
+
+    <a href="https://stackblitz.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>StackBlitz</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Code Online ↗</small>
+    </a>
+
+    <a href="https://github.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>GitHub</h3>
+      <p style="color:#a65dff">Free Plan</p>
+      <small>Code Hosting ↗</small>
+    </a>
+
+    <a href="https://jsfiddle.net/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>JSFiddle</h3>
+      <p style="color:#a65dff">Free</p>
+      <small>Code Online ↗</small>
+    </a>
+
+    <a href="https://www.w3schools.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>W3Schools</h3>
+      <p style="color:#a65dff">Free Learning</p>
+      <small>Learn Coding ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="automation-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">⚙️ Automation Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://zapier.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Zapier</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Automate Tasks ↗</small>
+    </a>
+
+    <a href="https://www.make.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Make</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Workflow Automation ↗</small>
+    </a>
+
+    <a href="https://n8n.io/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>n8n</h3>
+      <p style="color:#a65dff">Free Self-hosted</p>
+      <small>Workflow Automation ↗</small>
+    </a>
+
+    <a href="https://ifttt.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>IFTTT</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Connect Apps ↗</small>
+    </a>
+
+    <a href="https://pipedream.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Pipedream</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Developer Automation ↗</small>
+    </a>
+
+    <a href="https://activepieces.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Activepieces</h3>
+      <p style="color:#a65dff">Free / Self-hosted</p>
+      <small>Automate Workflows ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="pdf-office-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">📄 PDF & Office Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>iLovePDF</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>PDF Tools ↗</small>
+    </a>
+
+    <a href="https://smallpdf.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Smallpdf</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>PDF Tools ↗</small>
+    </a>
+
+    <a href="https://www.pdf24.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>PDF24</h3>
+      <p style="color:#a65dff">Free Tools</p>
+      <small>PDF Tools ↗</small>
+    </a>
+
+    <a href="https://docs.google.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Google Docs</h3>
+      <p style="color:#a65dff">Free</p>
+      <small>Documents ↗</small>
+    </a>
+
+    <a href="https://sheets.google.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Google Sheets</h3>
+      <p style="color:#a65dff">Free</p>
+      <small>Spreadsheets ↗</small>
+    </a>
+
+    <a href="https://www.microsoft365.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Microsoft 365</h3>
+      <p style="color:#a65dff">Free Web / Limited</p>
+      <small>Office Tools ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section style="padding:20px 0" id="education-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">📚 Education Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.khanacademy.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Khan Academy</h3>
+      <p style="color:#a65dff">Free Learning</p>
+      <small>Start Learning ↗</small>
+    </a>
+
+    <a href="https://www.coursera.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Coursera</h3>
+      <p style="color:#a65dff">Free / Paid Courses</p>
+      <small>Explore Courses ↗</small>
+    </a>
+
+    <a href="https://www.edx.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>edX</h3>
+      <p style="color:#a65dff">Free / Paid Courses</p>
+      <small>Explore Courses ↗</small>
+    </a>
+
+    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>freeCodeCamp</h3>
+      <p style="color:#a65dff">Free Coding</p>
+      <small>Learn Coding ↗</small>
+    </a>
+
+    <a href="https://www.w3schools.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>W3Schools</h3>
+      <p style="color:#a65dff">Free Tutorials</p>
+      <small>Learn Online ↗</small>
+    </a>
+
+    <a href="https://swayam.gov.in/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>SWAYAM</h3>
+      <p style="color:#a65dff">Free Indian Courses</p>
+      <small>Start Learning ↗</small>
+    </a>
+
+  </div>
+</section>
+ 
+<section style="padding:20px 0" id="business-hub" class="hub-section">
+  <h2 style="margin-bottom:18px">💼 Business Hub</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+    <a href="https://www.shopify.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Shopify</h3>
+      <p style="color:#a65dff">Free Trial / Paid</p>
+      <small>Online Store ↗</small>
+    </a>
+
+    <a href="https://www.hubspot.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>HubSpot</h3>
+      <p style="color:#a65dff">Free Tools / Paid</p>
+      <small>CRM & Marketing ↗</small>
+    </a>
+
+    <a href="https://mailchimp.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Mailchimp</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Email Marketing ↗</small>
+    </a>
+
+    <a href="https://www.notion.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Notion</h3>
+      <p style="color:#a65dff">Free Plan</p>
+      <small>Workspace ↗</small>
+    </a>
+
+    <a href="https://trello.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Trello</h3>
+      <p style="color:#a65dff">Free / Limited</p>
+      <small>Project Management ↗</small>
+    </a>
+
+    <a href="https://www.canva.com/" target="_blank" rel="noopener" style="background:#1b2b49;color:white;padding:15px;border-radius:12px;text-decoration:none">
+      <h3>Canva</h3>
+      <p style="color:#a65dff">Free / Pro</p>
+      <small>Business Design ↗</small>
+    </a>
+
+  </div>
+</section>
+  
+<section class="category" id="web-hub" class="hub-section">
+  <h2>🌐 Web Hub</h2>
+  <div class="tools-grid">
+
+    <a href="https://wordpress.com/" target="_blank" class="tool-card">
+      <h3>WordPress</h3>
+      <p>Create websites and blogs</p>
+    </a>
+
+    <a href="https://www.blogger.com/" target="_blank" class="tool-card">
+      <h3>Blogger</h3>
+      <p>Create free blogs</p>
+    </a>
+
+    <a href="https://www.wix.com/" target="_blank" class="tool-card">
+      <h3>Wix</h3>
+      <p>Build websites online</p>
+    </a>
+
+    <a href="https://sites.google.com/" target="_blank" class="tool-card">
+      <h3>Google Sites</h3>
+      <p>Create simple websites</p>
+    </a>
+
+    <a href="https://www.netlify.com/" target="_blank" class="tool-card">
+      <h3>Netlify</h3>
+      <p>Deploy websites</p>
+    </a>
+
+    <a href="https://vercel.com/" target="_blank" class="tool-card">
+      <h3>Vercel</h3>
+      <p>Deploy web projects</p>
+    </a>
+
+  </div>
+</section>
+  
+<footer>
+  MY CLOUD AI © 2026<br>
+  Demo Version 2.0 | Built for Everyone
+</footer>
+
+<script>
+const FAVORITES_KEY = "myCloudAIFavoritesV2";
+const THEME_KEY = "myCloudAITheme";
+
+function readFavorites() {
+  try {
+    const value = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+    return Array.isArray(value) ? value : [];
+  } catch (error) {
+    return [];
+  }
+}
+function saveFavorites(items) {
+  try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(items)); }
+  catch (error) { showToast("Browser storage unavailable."); }
+}
+function showToast(message) {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.setAttribute("role", "status");
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.display = "block";
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.style.display = "none", 1800);
+}
+function toggleTheme() {
+  const isLight = document.body.classList.toggle("light-mode");
+  document.body.classList.remove("dark-mode");
+  try { localStorage.setItem(THEME_KEY, isLight ? "light" : "dark"); } catch (e) {}
+}
+function applySavedTheme() {
+  let theme = "dark";
+  try { theme = localStorage.getItem(THEME_KEY) || "dark"; } catch (e) {}
+  document.body.classList.toggle("light-mode", theme === "light");
+}
+function addFavoriteButtons() {
+  document.querySelectorAll("body > section a[href]").forEach(link => {
+    if (link.dataset.favoriteReady === "yes") return;
+    link.dataset.favoriteReady = "yes";
+    const wrap = document.createElement("div");
+    wrap.className = "tool-link-wrap";
+    link.parentNode.insertBefore(wrap, link);
+    wrap.appendChild(link);
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "favorite-btn";
+    button.setAttribute("aria-label", "Toggle favorite");
+    button.addEventListener("click", () => {
+      const favorites = readFavorites();
+      const exists = favorites.some(item => item.url === link.href);
+      const updated = exists
+        ? favorites.filter(item => item.url !== link.href)
+        : [...favorites, { url: link.href, name: (link.querySelector("h3")?.textContent || link.textContent).trim() }];
+      saveFavorites(updated);
+      updateFavoriteButton(button, link.href);
+      renderFavorites();
+      showToast(exists ? "Favorite removed" : "Added to favorites");
+    });
+    wrap.appendChild(button);
+    updateFavoriteButton(button, link.href);
+  });
+}
+function updateFavoriteButton(button, url) {
+  const saved = readFavorites().some(item => item.url === url);
+  button.textContent = saved ? "⭐" : "☆";
+  button.title = saved ? "Remove from favorites" : "Add to favorites";
+  button.setAttribute("aria-pressed", saved ? "true" : "false");
+}
+function renderFavorites() {
+  const list = document.getElementById("favoriteList");
+  const empty = document.getElementById("favoriteEmpty");
+  if (!list || !empty) return;
+  list.innerHTML = "";
+  const favorites = readFavorites();
+  empty.style.display = favorites.length ? "none" : "block";
+  favorites.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "favorite-entry";
+    const link = document.createElement("a");
+    link.href = item.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = item.name || item.url;
+    link.style.cssText = "color:#65ddff;padding:10px;background:#1b2b49;border-radius:10px;text-decoration:none;overflow-wrap:anywhere";
+    const remove = document.createElement("button");
+    remove.className = "favorite-btn";
+    remove.type = "button";
+    remove.textContent = "✕";
+    remove.title = "Remove favorite";
+    remove.addEventListener("click", () => {
+      saveFavorites(readFavorites().filter(f => f.url !== item.url));
+      document.querySelectorAll(".favorite-btn").forEach(btn => {
+        const a = btn.parentElement?.querySelector("a[href]");
+        if (a) updateFavoriteButton(btn, a.href);
+      });
+      renderFavorites();
+      showToast("Favorite removed");
+    });
+    row.append(link, remove);
+    list.appendChild(row);
+  });
+}
+function showFavorites() {
+  document.getElementById("favoritesPanel")?.scrollIntoView({ behavior: "smooth" });
+  renderFavorites();
+}
+function clearSearch() {
+  const input = document.getElementById("searchBox");
+  if (input) { input.value = ""; searchTools(); }
+}
+function searchTools() {
+  const query = (document.getElementById("searchBox")?.value || "").trim().toLowerCase();
+  let found = 0;
+  document.querySelectorAll("#toolGrid .card").forEach(card => {
+    const match = card.innerText.toLowerCase().includes(query);
+    card.style.display = match ? "" : "none";
+    if (query && match) found++;
+  });
+  document.querySelectorAll("body > section.hub-section").forEach(section => {
+    let sectionFound = 0;
+    section.querySelectorAll("a[href]").forEach(link => {
+      const match = link.innerText.toLowerCase().includes(query);
+      const wrapper = link.closest(".tool-link-wrap");
+      (wrapper || link).style.display = match ? "" : "none";
+      if (query && match) sectionFound++;
+    });
+    section.style.display = (!query || sectionFound > 0) ? "" : "none";
+    found += sectionFound;
+  });
+  const noResult = document.getElementById("noResult");
+  if (noResult) noResult.style.display = query && found === 0 ? "block" : "none";
+}
+function setupCategoryNavigation() {
+  const cards = [...document.querySelectorAll("#toolGrid .card")];
+  const ids = ["ai-tools-hub","image-studio","video-studio","audio-studio","cloud-storage","gpu-hub","developer-hub","automation-hub","pdf-office-hub","education-hub","business-hub","web-hub"];
+  cards.forEach((card, index) => {
+    card.setAttribute("role", "link");
+    card.setAttribute("tabindex", "0");
+    card.addEventListener("click", () => document.getElementById(ids[index])?.scrollIntoView({behavior:"smooth"}));
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        document.getElementById(ids[index])?.scrollIntoView({behavior:"smooth"});
+      }
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  applySavedTheme();
+  addFavoriteButtons();
+  renderFavorites();
+  setupCategoryNavigation();
+});
+</script>
+<a href="#top" class="home-button">🏠 Home</a>
+</body>
+</html>
