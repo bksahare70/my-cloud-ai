@@ -1,0 +1,51 @@
+MY CLOUD AI — ADVANCED BUILD (FREE-TO-START)
+================================================
+
+WHAT THIS PACKAGE DOES
+- Keeps the existing 22-page site and adds a real Supabase Auth flow and private Storage UI.
+- Login.html and Signup.html use Supabase email/password authentication after configuration.
+- My-Files.html uploads, lists, downloads and deletes files in the signed-in user's private folder.
+- GPU-Cloud.html links to external notebook/runtime providers. It does NOT provide its own GPU.
+- Existing AI Studio pages remain tool directories unless a provider/API is separately connected.
+
+IMPORTANT LIMITS
+- GitHub Pages is static hosting; it cannot safely store secret keys or run a private backend.
+- Supabase free-plan quotas and features can change. Check the provider's current pricing/limits.
+- Only the Supabase anon/public key belongs in config.js. NEVER put service_role keys, passwords,
+  private API keys, or access tokens in this repository.
+- The project is not production-audited. Do not store sensitive or irreplaceable files until tested.
+- AI model APIs may require separate accounts, keys, quotas or payment. This package does not
+  promise unlimited free AI generation or always-on GPU.
+
+ANDROID INSTALL — DO NOT DELETE YOUR CURRENT SITE
+1. Keep your current GitHub repository and backup files unchanged.
+2. Create a Supabase project using its current free option (if available in your region).
+3. In Supabase, open Project Settings / API. Copy Project URL and anon/public key.
+4. Edit config.js in this package:
+   - replace https://YOUR-PROJECT.supabase.co with your Project URL
+   - replace YOUR_SUPABASE_ANON_PUBLIC_KEY with the anon/public key
+   - leave bucket name as user-files
+5. In Supabase SQL Editor, run the complete contents of supabase-storage-policies.sql.
+6. In Supabase Authentication settings, configure the allowed Site URL and Redirect URLs
+   to your GitHub Pages site, for example:
+   https://bksahare70.github.io/my-cloud-ai/
+   Also review email confirmation settings.
+7. Test locally only after deployment: Signup, confirm email if required, Login, upload a harmless
+   test file, download it, delete it, then test a second account cannot see the first account's files.
+8. Upload package files to GitHub only after configuration. Preserve index-backup-2026.html and
+   MY-CLOUD-AI-Video-Studio.html. Do not overwrite those backups.
+
+SECURITY NOTES
+- The storage bucket must remain PRIVATE.
+- Policies restrict each user's objects to a folder named with their auth user ID.
+- Do not remove the SQL policies or make the bucket public.
+- If you accidentally expose a secret key, rotate it in the provider dashboard immediately.
+- Use a strong unique password and enable available account protections.
+
+GPU
+- Open GPU-Cloud.html and choose a provider. Free GPU access is quota-limited and may be unavailable.
+- Colab/Kaggle sessions are external sessions; this website does not control them.
+
+ROLLBACK
+- Before replacing files, keep a local copy of the current repository or use GitHub commit history.
+- Never delete the original backup files.
