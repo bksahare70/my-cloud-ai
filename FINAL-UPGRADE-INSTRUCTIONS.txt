@@ -1,0 +1,18 @@
+MY CLOUD AI — FINAL ALL-IN-ONE UPGRADE
+
+UPLOAD
+1. Download and extract this ZIP on your Android phone.
+2. Open https://github.com/bksahare70/my-cloud-ai
+3. Add file > Upload files.
+4. Select ALL files inside the extracted folder (not the folder itself), including files in the root.
+5. Upload and commit changes.
+
+IMPORTANT
+- This package preserves the existing Supabase URL, public publishable key, and bucket in config.js. Never replace it with a service_role or secret key.
+- Do not upload any secret/service_role key.
+- Before upload, GitHub can retain the previous version in file history.
+- This static GitHub Pages site is a frontend and directory. It does not provide its own GPU, AI models, unlimited storage, or background automation. External providers control their own access, pricing, usage limits and terms.
+- Automation Hub is a local checklist, not background automation.
+- Supabase login/storage still depend on the existing project's Auth and Storage policies.
+
+This ZIP contains the current site files, the previously tested Studio search/workspace updates, the tested Storage/Notebook search fix, and the final Settings/Profile/Automation updates.
