@@ -11,6 +11,8 @@
   const themeButton=document.getElementById('theme');
   if(themeButton)themeButton.addEventListener('click',()=>{const dark=root.dataset.theme!=='dark';root.dataset.theme=dark?'dark':'light';safeSet('mycloud-theme',dark?'dark':'light')});
   const search=document.getElementById('q');
-  if(search)search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();document.querySelectorAll('[data-key]').forEach(card=>{card.hidden=!String(card.dataset.key||'').toLowerCase().includes(q)})});
-})();
+  if(search)search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();document.querySelectorAll('#grid .card').forEach(card=>{
+  const text = (card.innerText + ' ' + (card.dataset.key || '')).toLowerCase();
+  card.hidden = !text.includes(q);
+});
 </script></body></html>
