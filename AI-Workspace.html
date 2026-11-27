@@ -1,350 +1,49 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#14285a">
-<title>AI Workspace | MY CLOUD AI</title>
-
-<style>
-:root {
-  --bg:#f4f7fc;
-  --panel:#fff;
-  --ink:#17233d;
-  --muted:#64748b;
-  --accent:#2563eb;
-  --line:#dce5f2;
-}
-
-[data-theme="dark"] {
-  --bg:#0b1224;
-  --panel:#121d35;
-  --ink:#eef4ff;
-  --muted:#aab8d0;
-  --accent:#60a5fa;
-  --line:#293957;
-}
-
-* {
-  box-sizing:border-box;
-}
-
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font:15px/1.5 system-ui,Arial;
-}
-
-header {
-  padding:22px 16px;
-  background:linear-gradient(120deg,#101a3a,#1758b8,#5424a8);
-  color:white;
-}
-
-header,main,footer {
-  max-width:1050px;
-  margin:auto;
-}
-
-main {
-  padding:20px 14px;
-}
-
-nav {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-
-nav a {
-  color:white;
-  text-decoration:none;
-  padding:7px 10px;
-  border:1px solid #ffffff55;
-  border-radius:9px;
-}
-
-.top {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:14px 0;
-}
-
-.top input {
-  flex:1;
-  min-width:190px;
-}
-
-input,button {
-  font:inherit;
-  padding:11px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:var(--panel);
-  color:var(--ink);
-}
-
-button {
-  cursor:pointer;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:12px;
-}
-
-.card,.panel {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:15px;
-}
-
-.card {
-  color:var(--ink);
-  text-decoration:none;
-  display:block;
-}
-
-.card:hover {
-  border-color:var(--accent);
-}
-
-.card b {
-  display:block;
-  font-size:16px;
-}
-
-.card[hidden] {
-  display:none !important;
-}
-
-.muted,small {
-  color:var(--muted);
-}
-
-.notice {
-  margin:14px 0;
-  padding:13px;
-  border-radius:12px;
-  background:var(--panel);
-  border:1px solid var(--line);
-}
-
-footer {
-  text-align:center;
-  padding:22px;
-  color:var(--muted);
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>🧠 MY CLOUD AI Workspace</h1>
-  <p>One starting point for your AI and cloud tools.</p>
-
-  <nav>
-    <a href="index.html">⌂ Home</a>
-    <a href="AI-Prompt-Studio.html">Prompt Studio</a>
-    <a href="Integration-Center.html">Integrations</a>
-    <a href="Settings.html">Settings</a>
-  </nav>
-</header>
-
-<main>
-
-<div class="top">
-  <input
-    id="q"
-    type="search"
-    placeholder="Search a studio or service..."
-    autocomplete="off"
-  >
-  <button id="theme" type="button">🌙 / ☀️ Theme</button>
-</div>
-
-<div class="notice">
-  <b>Workspace guide</b><br>
-  <span class="muted">
-    Choose a studio below. Most AI tools open on their own provider
-    websites; sign-in, pricing, usage limits and generation are
-    controlled by those providers.
-  </span>
-</div>
-
-<div class="grid" id="grid">
-
-<a class="card" data-key="chat research assistant" href="AI-Chat-Studio.html">
-  <b>💬 Chat & Research</b>
-  <small>AI assistants and research tools</small>
-</a>
-
-<a class="card" data-key="video movie animation" href="AI-Video-Studio.html">
-  <b>🎬 Video Studio</b>
-  <small>Video creation and editing tools</small>
-</a>
-
-<a class="card" data-key="image art picture" href="AI-Image-Studio.html">
-  <b>🖼️ Image Studio</b>
-  <small>Image generation and editing tools</small>
-</a>
-
-<a class="card" data-key="audio music sound" href="AI-Audio-Studio.html">
-  <b>🎵 Audio Studio</b>
-  <small>Audio and music tools</small>
-</a>
-
-<a class="card" data-key="voice speech text to speech" href="AI-Voice-Studio.html">
-  <b>🎙️ Voice Studio</b>
-  <small>Voice and speech tools</small>
-</a>
-
-<a class="card" data-key="coding programming app" href="AI-Coding-Studio.html">
-  <b>💻 Coding Studio</b>
-  <small>Code and app-building tools</small>
-</a>
-
-<a class="card" data-key="design graphic logo" href="AI-Design-Studio.html">
-  <b>🎨 Design Studio</b>
-  <small>Design and graphics tools</small>
-</a>
-
-<a class="card" data-key="writing documents productivity" href="AI-Productivity.html">
-  <b>📝 Productivity</b>
-  <small>Writing, planning and documents</small>
-</a>
-
-<a class="card" data-key="prompt generator prompt" href="AI-Prompt-Studio.html">
-  <b>✍️ Prompt Studio</b>
-  <small>Create reusable prompts locally</small>
-</a>
-
-<a class="card" data-key="files storage upload download" href="My-Files.html">
-  <b>📁 My Files</b>
-  <small>Private file management</small>
-</a>
-
-<a class="card" data-key="gpu compute notebook" href="GPU-Cloud.html">
-  <b>⚡ GPU Cloud</b>
-  <small>External compute options</small>
-</a>
-
-<a class="card" data-key="automation workflow checklist" href="Automation-Hub.html">
-  <b>🔁 Automation Hub</b>
-  <small>Local workflow checklist</small>
-</a>
-
-<a class="card" data-key="integrations api security" href="Integration-Center.html">
-  <b>🔌 Integration Center</b>
-  <small>Connection checks and setup guide</small>
-</a>
-
-</div>
-
-<div class="notice">
-  <b>Honest status:</b>
-  This workspace is a frontend hub. It does not provide its own GPU,
-  host AI models, or run background automations. Those capabilities
-  require external providers and, in some cases, a separately
-  configured backend.
-</div>
-
-<p id="searchStatus" class="muted" aria-live="polite"></p>
-
-</main>
-
-<footer>
-  MY CLOUD AI • Workspace
-</footer>
-
-<script>
-(function() {
-
-  const root = document.documentElement;
-
-  function safeGet(key) {
-    try {
-      return localStorage.getItem(key);
-    } catch(error) {
-      return null;
-    }
-  }
-
-  function safeSet(key,value) {
-    try {
-      localStorage.setItem(key,value);
-    } catch(error) {}
-  }
-
-  if(safeGet("mycloud-theme") === "dark") {
-    root.dataset.theme = "dark";
-  }
-
-  const themeButton = document.getElementById("theme");
-
-  if(themeButton) {
-    themeButton.addEventListener("click",function() {
-      const dark = root.dataset.theme !== "dark";
-
-      root.dataset.theme = dark ? "dark" : "light";
-
-      safeSet(
-        "mycloud-theme",
-        dark ? "dark" : "light"
-      );
-    });
-  }
-
-  const search = document.getElementById("q");
-  const cards = document.querySelectorAll("#grid .card");
-  const status = document.getElementById("searchStatus");
-
-  if(search) {
-
-    search.addEventListener("input",function() {
-
-      const query = search.value.toLowerCase().trim();
-      let visible = 0;
-
-      cards.forEach(function(card) {
-
-        const text = (
-          card.textContent + " " +
-          (card.getAttribute("data-key") || "")
-        ).toLowerCase();
-
-        const match = text.includes(query);
-
-        card.hidden = !match;
-
-        if(match) {
-          visible++;
-        }
-
-      });
-
-      if(status) {
-        if(query === "") {
-          status.textContent = "Showing all studios.";
-        } else if(visible === 0) {
-          status.textContent = "No matching studio found.";
-        } else {
-          status.textContent = visible + " studio(s) found.";
-        }
-      }
-
-    });
-
-  }
-
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14285a"><title>AI Workspace | MY CLOUD AI</title><style>
+:root{--bg:#f4f7fc;--panel:#fff;--ink:#17233d;--muted:#64748b;--accent:#2563eb;--line:#dce5f2}[data-theme=dark]{--bg:#0b1224;--panel:#121d35;--ink:#eef4ff;--muted:#aab8d0;--accent:#60a5fa;--line:#293957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Arial}header{padding:22px 16px;background:linear-gradient(120deg,#101a3a,#1758b8,#5424a8);color:white}header,main,footer{max-width:1050px;margin:auto}main{padding:20px 14px}nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}nav a{color:white;text-decoration:none;padding:7px 10px;border:1px solid #ffffff55;border-radius:9px}.top{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.top input{flex:1;min-width:190px}input,button{font:inherit;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}button{cursor:pointer}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}.card{color:var(--ink);text-decoration:none;display:block}.card:hover{border-color:var(--accent)}.card b{display:block;font-size:16px}.card[hidden],.studio-card[hidden]{display:none!important}.studio-card{display:flex;flex-direction:column;gap:7px}.card{flex:1}.card-actions{display:flex;gap:6px;flex-wrap:wrap}.card-actions button{font-size:12px;padding:6px 9px}.card-actions button.active{border-color:var(--accent);font-weight:700}.toolbar-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.stats{font-size:13px;color:var(--muted);margin:8px 0}.recent-list{display:flex;gap:7px;flex-wrap:wrap}.recent-list a{padding:6px 9px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none;background:var(--panel)}.muted,small{color:var(--muted)}.notice{margin:14px 0;padding:13px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}footer{text-align:center;padding:22px;color:var(--muted)}
+</style></head><body><header><h1>🧠 MY CLOUD AI Workspace</h1><p>One starting point for your AI and cloud tools.</p><nav><a href="index.html">⌂ Home</a><a href="AI-Prompt-Studio.html">Prompt Studio</a><a href="Integration-Center.html">Integrations</a><a href="Settings.html">Settings</a></nav></header><main><div class="top"><input id="q" placeholder="Search a studio or service…"><button id="theme">🌙 / ☀️ Theme</button></div><div class="toolbar-actions"><button type="button" data-mode="all">All Studios</button><button type="button" data-mode="fav">⭐ Favorites</button><button type="button" data-mode="pinned">📌 Pinned</button></div><div class="stats" id="studioStats" aria-live="polite"></div><section class="panel"><b>🕘 Recently opened</b><div class="recent-list" id="recentList"><span class="muted">No recently opened studios yet.</span></div></section><div class="notice"><b>Workspace guide</b><br><span class="muted">Choose a studio below. Most AI tools open on their own provider websites; sign-in, pricing, usage limits and generation are controlled by those providers.</span></div><div class="grid" id="grid">
+<a class="card" data-key="chat research assistant" href="AI-Chat-Studio.html"><b>💬 Chat & Research</b><small>AI assistants and research tools</small></a><a class="card" data-key="video movie animation" href="AI-Video-Studio.html"><b>🎬 Video Studio</b><small>Video creation and editing tools</small></a><a class="card" data-key="image art picture" href="AI-Image-Studio.html"><b>🖼️ Image Studio</b><small>Image generation and editing tools</small></a><a class="card" data-key="audio music sound" href="AI-Audio-Studio.html"><b>🎵 Audio Studio</b><small>Audio and music tools</small></a><a class="card" data-key="voice speech text to speech" href="AI-Voice-Studio.html"><b>🎙️ Voice Studio</b><small>Voice and speech tools</small></a><a class="card" data-key="coding programming app" href="AI-Coding-Studio.html"><b>💻 Coding Studio</b><small>Code and app-building tools</small></a><a class="card" data-key="design graphic logo" href="AI-Design-Studio.html"><b>🎨 Design Studio</b><small>Design and graphics tools</small></a><a class="card" data-key="writing documents productivity" href="AI-Productivity.html"><b>📝 Productivity</b><small>Writing, planning and documents</small></a><a class="card" data-key="prompt generator prompt" href="AI-Prompt-Studio.html"><b>✍️ Prompt Studio</b><small>Create reusable prompts locally</small></a><a class="card" data-key="files storage upload download" href="My-Files.html"><b>📁 My Files</b><small>Private file management</small></a><a class="card" data-key="gpu compute notebook" href="GPU-Cloud.html"><b>⚡ GPU Cloud</b><small>External compute options</small></a><a class="card" data-key="automation workflow checklist" href="Automation-Hub.html"><b>🔁 Automation Hub</b><small>Local workflow checklist</small></a><a class="card" data-key="integrations api security" href="Integration-Center.html"><b>🔌 Integration Center</b><small>Connection checks and setup guide</small></a>
+</div><div class="notice"><b>Honest status:</b> This workspace is a frontend hub. It does not provide its own GPU, host AI models, or run background automations. Those capabilities require external providers and, in some cases, a separately configured backend.</div></main><footer>MY CLOUD AI • Workspace</footer><script>
+(()=>{
+ 'use strict';
+ const root=document.documentElement;
+ const safeGet=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(_){return []}};
+ const safeSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+ const getTheme=()=>{try{return localStorage.getItem('mycloud-theme')}catch(_){return null}};
+ const setTheme=v=>{try{localStorage.setItem('mycloud-theme',v)}catch(_){}};
+ if(getTheme()==='dark')root.dataset.theme='dark';
+ const theme=document.getElementById('theme');
+ theme?.addEventListener('click',()=>{const d=root.dataset.theme!=='dark';root.dataset.theme=d?'dark':'light';setTheme(d?'dark':'light')});
+ const grid=document.getElementById('grid'), search=document.getElementById('q');
+ const stats=document.getElementById('studioStats'), recentBox=document.getElementById('recentList');
+ let mode='all';
+ const original=[...grid.querySelectorAll('a.card')];
+ original.forEach(a=>{
+   const wrap=document.createElement('div');wrap.className='studio-card';
+   a.parentNode.insertBefore(wrap,a);wrap.appendChild(a);
+   const actions=document.createElement('div');actions.className='card-actions';
+   const fav=document.createElement('button');fav.type='button';fav.textContent='☆ Favorite';
+   const pin=document.createElement('button');pin.type='button';pin.textContent='📌 Pin';
+   actions.append(fav,pin);wrap.appendChild(actions);
+   fav.addEventListener('click',()=>{const arr=safeGet('mycloud-favorites');const url=a.getAttribute('href');const next=arr.includes(url)?arr.filter(x=>x!==url):[...arr,url];safeSet('mycloud-favorites',next);render()});
+   pin.addEventListener('click',()=>{const arr=safeGet('mycloud-pinned');const url=a.getAttribute('href');const next=arr.includes(url)?arr.filter(x=>x!==url):[...arr,url];safeSet('mycloud-pinned',next);render()});
+   a.addEventListener('click',()=>{const url=a.getAttribute('href');const arr=safeGet('mycloud-recent').filter(x=>x!==url);safeSet('mycloud-recent',[url,...arr].slice(0,6))});
+ });
+ function render(){
+   const q=(search.value||'').toLowerCase().trim(),favs=safeGet('mycloud-favorites'),pins=safeGet('mycloud-pinned');
+   let shown=0;
+   original.forEach(a=>{const wrap=a.parentElement,url=a.getAttribute('href');const match=(!q||(a.textContent+' '+(a.dataset.key||'')).toLowerCase().includes(q))&&(mode==='all'||(mode==='fav'?favs.includes(url):pins.includes(url)));wrap.hidden=!match;if(match)shown++;
+     const buttons=wrap.querySelectorAll('button');const isFav=favs.includes(url),isPin=pins.includes(url);
+     buttons[0].textContent=isFav?'★ Favorited':'☆ Favorite';buttons[0].classList.toggle('active',isFav);
+     buttons[1].textContent=isPin?'📌 Pinned':'📌 Pin';buttons[1].classList.toggle('active',isPin);
+   });
+   stats.textContent=`Showing ${shown} of ${original.length} studios • ${favs.length} favorites • ${pins.length} pinned`+(q&&shown===0?' • No matching studio found.':'');
+   const recent=safeGet('mycloud-recent');recentBox.innerHTML='';
+   const valid=recent.map(url=>original.find(a=>a.getAttribute('href')===url)).filter(Boolean);
+   if(!valid.length){recentBox.textContent='No recently opened studios yet.';recentBox.className='recent-list muted'}
+   else{recentBox.className='recent-list';valid.forEach(a=>{const link=document.createElement('a');link.href=a.getAttribute('href');link.textContent=a.querySelector('b')?.textContent||'Studio';recentBox.appendChild(link)})}
+ }
+ search.addEventListener('input',render);
+ document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;render()}));
+ render();
 })();
-</script>
-
-</body>
-</html>
+</script></body></html>
