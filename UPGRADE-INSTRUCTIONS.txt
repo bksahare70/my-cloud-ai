@@ -1,0 +1,26 @@
+MY CLOUD AI — COMPLETE ADVANCED UPGRADE
+
+Package contents
+- All original root HTML/CSS/JS files from the supplied original archive (nested ZIPs omitted).
+- Updated index.html, AI-Workspace.html, Integration-Center.html.
+- Upgraded AI-Prompt-Studio.html with Save/Open/Delete/Search/Export/Import.
+- Automation-Hub.html local workflow checklist (not background automation).
+
+IMPORTANT BEFORE UPLOADING
+1. Keep a backup of the current GitHub repository.
+2. Upload the files from this ZIP to the repository root, preserving the folder structure.
+3. Replace matching files when GitHub asks. Do not delete unrelated repository files.
+4. Keep your existing config.js if it already contains your Supabase project URL and publishable key. This package includes the original config.js from the supplied archive; do NOT overwrite a newer working config.js with it.
+5. Never put a Supabase service_role key or private AI API key in browser files.
+
+PROMPT STORAGE
+Saved prompts are stored in this browser/device localStorage. They do not automatically sync across devices or to Supabase. Use Export backup to keep a copy.
+
+LIMITATIONS
+GitHub Pages serves static frontend files. This package does not create a private backend, AI model hosting, GPU, paid-provider access, or background automation. External services have their own accounts, pricing, quotas and availability.
+
+TEST AFTER UPLOAD
+- Open AI-Prompt-Studio.html, build a prompt, save it, refresh, open it, then delete it.
+- Export a backup and verify a JSON file downloads.
+- Open AI-Workspace.html and Integration-Center.html.
+- Test login/storage only with non-sensitive test files.
