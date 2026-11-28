@@ -1,36 +1,116 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14285a"><title>Chat & Research AI | MY CLOUD AI</title><style>
-:root{--bg:#f4f7fc;--panel:#fff;--ink:#17233d;--muted:#64748b;--accent:#2563eb;--line:#dce5f2}
-[data-theme=dark]{--bg:#0b1224;--panel:#121d35;--ink:#eef4ff;--muted:#aab8d0;--accent:#60a5fa;--line:#293957}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Arial,sans-serif}
-header{padding:22px 16px;background:linear-gradient(120deg,#101a3a,#1758b8,#5424a8);color:white}
-header .wrap,main,.foot{max-width:1100px;margin:auto}h1{margin:0;font-size:clamp(24px,5vw,36px)}header p{margin:6px 0 0;color:#e4edff}
-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}nav a,.btn{color:white;background:#ffffff22;border:1px solid #ffffff44;padding:8px 12px;border-radius:10px;text-decoration:none}
-main{padding:20px 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-input{flex:1;min-width:180px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
-button{cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel);color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
-.card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);text-decoration:none;min-height:100px}
-.card:hover{border-color:var(--accent);transform:translateY(-1px)}.card[hidden],.search-empty[hidden]{display:none!important}.search-empty{padding:12px;margin:10px 0;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}.card b{display:block;font-size:16px}.card small{color:var(--muted)}
-section{margin:20px 0}.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--muted)}
-footer{padding:20px 14px;text-align:center;color:var(--muted)}a{color:var(--accent)}
-@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:11px}}
-</style></head><body><header><div class="wrap"><h1>☁️ Chat & Research AI</h1><p>Chat assistants and research tools.</p><nav><a href="index.html">⌂ Home</a><a href="AI-Video-Studio.html">Video</a><a href="AI-Image-Studio.html">Image</a><a href="AI-Chat-Studio.html">Chat</a><a href="AI-Audio-Studio.html">Audio</a><a href="GPU-Cloud.html">Cloud</a></nav></div></header><main><div class="toolbar"><input id="search" placeholder="Search on this page…"><p id="searchStatus" class="search-empty" aria-live="polite" hidden></p><button id="theme">🌙 / ☀️ Theme</button></div><p class="note">Chat assistants and research tools. These are external links; availability, free plans and account requirements are set by each provider.</p><div class="grid"><a class="card" data-search="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><b>ChatGPT</b><small>Open official website ↗</small></a><a class="card" data-search="google gemini" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"><b>Google Gemini</b><small>Open official website ↗</small></a><a class="card" data-search="claude" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><b>Claude</b><small>Open official website ↗</small></a><a class="card" data-search="microsoft copilot" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer"><b>Microsoft Copilot</b><small>Open official website ↗</small></a><a class="card" data-search="perplexity" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer"><b>Perplexity</b><small>Open official website ↗</small></a><a class="card" data-search="poe" href="https://poe.com/" target="_blank" rel="noopener noreferrer"><b>Poe</b><small>Open official website ↗</small></a></div></main><footer>MY CLOUD AI • Tool directory • External services have their own terms and limits.</footer><script>
-(()=>{
- 'use strict';
- const root=document.documentElement;
- const safeGet=k=>{try{return localStorage.getItem(k)}catch(_){return null}};
- const safeSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}};
- if(safeGet('mycloud-theme')==='dark')root.dataset.theme='dark';
- const theme=document.getElementById('theme');
- if(theme)theme.addEventListener('click',()=>{const dark=root.dataset.theme!=='dark';root.dataset.theme=dark?'dark':'light';safeSet('mycloud-theme',dark?'dark':'light')});
- const input=document.getElementById('search'),status=document.getElementById('searchStatus');
- const cards=[...document.querySelectorAll('a.card[data-search]')];
- function filter(){
-   const q=(input?.value||'').toLowerCase().trim();let count=0;
-   cards.forEach(card=>{const hay=(card.dataset.search+' '+card.textContent).toLowerCase();const match=!q||hay.includes(q);card.hidden=!match;if(match)count++});
-   if(status){status.hidden=!q||count>0;status.textContent=count===0?'No matching tools found. Try another word.':'';}
- }
- if(input)input.addEventListener('input',filter);
- filter();
-})();
-</script></body></html>
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MY CLOUD AI - Chat Studio</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#0b1220;color:#eaf0ff;font-family:Arial,sans-serif}
+    header{padding:18px;background:#111c31;border-bottom:1px solid #263650}
+    header h2{margin:0;font-size:21px}
+    header p{margin:7px 0 0;color:#9eacc5;font-size:13px}
+    #chat{height:calc(100dvh - 160px);overflow-y:auto;padding:16px;max-width:850px;margin:auto}
+    .msg{padding:12px 15px;margin:12px 0;border-radius:14px;max-width:88%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+    .user{background:#2457a7;margin-left:auto}
+    .ai{background:#1b2940;margin-right:auto}
+    .system{color:#ffcf75;text-align:center;font-size:13px;margin:12px}
+    footer{position:fixed;bottom:0;left:0;right:0;padding:12px;background:#111c31;border-top:1px solid #263650}
+    .inputrow{display:flex;gap:8px;max-width:850px;margin:auto}
+    textarea{flex:1;resize:none;height:48px;border:1px solid #40516d;border-radius:12px;padding:13px;background:#0b1220;color:white;font-size:15px}
+    button{border:0;border-radius:12px;padding:0 19px;background:#3978e8;color:white;font-weight:bold;font-size:15px}
+    button:disabled{opacity:.5}
+    .hint{max-width:850px;margin:7px auto 0;color:#8292ad;font-size:11px}
+  </style>
+</head>
+<body>
+  <header>
+    <h2>🤖 MY CLOUD AI — Chat Studio</h2>
+    <p>Powered by Gemini AI</p>
+  </header>
+
+  <main id="chat">
+    <div class="msg ai">नमस्ते! 👋 मैं MY CLOUD AI हूँ। आप मुझसे हिंदी या English में कुछ भी पूछ सकते हैं।</div>
+  </main>
+
+  <footer>
+    <div class="inputrow">
+      <textarea id="message" placeholder="अपना सवाल लिखें..." rows="1"></textarea>
+      <button id="send">Send</button>
+    </div>
+    <div class="hint">Enter = Send · Shift + Enter = नई लाइन</div>
+  </footer>
+
+  <script src="./config.js"></script>
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("message");
+    const send = document.getElementById("send");
+
+    const FUNCTION_URL =
+      "https://qxmgcywzdzbfrhmcdclf.supabase.co/functions/v1/gemini-chat";
+
+    function addMessage(text, type) {
+      const div = document.createElement("div");
+      div.className = "msg " + type;
+      div.textContent = text;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+      return div;
+    }
+
+    async function sendMessage() {
+      const message = input.value.trim();
+      if (!message || send.disabled) return;
+
+      const config = window.MY_CLOUD_CONFIG;
+      if (!config || !config.supabaseAnonKey) {
+        addMessage("Error: config.js या Supabase configuration नहीं मिली।", "system");
+        return;
+      }
+
+      addMessage(message, "user");
+      input.value = "";
+      send.disabled = true;
+      send.textContent = "...";
+      const waiting = addMessage("AI जवाब तैयार कर रहा है...", "ai");
+
+      try {
+        const response = await fetch(FUNCTION_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": config.supabaseAnonKey
+          },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || data.message || ("HTTP " + response.status));
+        }
+        if (!data.success || !data.reply) {
+          throw new Error(data.error || "AI से जवाब नहीं मिला।");
+        }
+        waiting.textContent = data.reply;
+      } catch (error) {
+        waiting.textContent = "समस्या: " + error.message +
+          "\nकृपया इंटरनेट या Supabase Function configuration जाँचें।";
+      } finally {
+        send.disabled = false;
+        send.textContent = "Send";
+        input.focus();
+      }
+    }
+
+    send.addEventListener("click", sendMessage);
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
